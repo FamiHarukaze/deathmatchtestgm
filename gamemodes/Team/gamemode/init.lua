@@ -30,6 +30,9 @@ Model("models/player/Group01/male_09.mdl")
 function GM:PlayerConnect(name, ip)
 	for k, v in pairs(player.GetAll()) do
 		v:PrintMessage( HUD_PRINTTALK, name .. " just became a beta tester!")
+		if v:IsSuperAdmin() then
+			v:SendHint(name .. " joined (" .. ip .. ")")
+		end
 	end
 end
 
@@ -60,7 +63,7 @@ function GM:PlayerShouldTakeDamage( ply, attacker )
     if ( (ply:IsPlayer() && attacker:IsPlayer()) && (ply:Team() == attacker:Team()) ) then
         
         attacker:PrintMessage(HUD_PRINTTALK, "Do not teamkill!")
-        return false // Damage is now half of what you would normally take.
+        return false
 
     end
  
@@ -79,5 +82,3 @@ function GM:PlayerSetHandsModel( ply, ent )
 	end
 
 end
- 
-hook.Add( "PlayerSpawn", "playerSetSpeedtest", playerSetSpeed )

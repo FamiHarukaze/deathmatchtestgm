@@ -1,4 +1,4 @@
 include( "shared.lua" )
-include( 'cl_spawnmenu.lua' )
+DeriveGamemode("sandbox")
 
 print("Clientside lua startup")

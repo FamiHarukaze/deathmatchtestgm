@@ -1,6 +1,6 @@
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
-AddCSLuaFile( "cl_spawnmenu.lua" )
+DeriveGamemode("sandbox")
 
 include( "shared.lua" )
 

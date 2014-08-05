@@ -6,7 +6,7 @@ DeriveGamemode("sandbox")
 include( "shared.lua" )
 include( "teams.lua" )
 include( "blocks.lua" )
-
+RunConsoleCommand("sv_alltalk 1")
 //Serverside stuff goes here
 local PlayerModels = {
 Model("models/player/Group01/Female_01.mdl"),

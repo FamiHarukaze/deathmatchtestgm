@@ -4,5 +4,5 @@ GM.Email = "N/A"
 GM.Website = "N/A"
 
 function GM:Initialize()
-
-end 
+	self.BaseClass.Initialize( self )
+end

@@ -1,7 +1,10 @@
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
+AddCSLuaFile( "cl_spawnmenu.lua" )
 
 include( "shared.lua" )
+
+//Serverside stuff goes here
 
 function GM:PlayerConnect(name, ip)
 
@@ -17,8 +20,14 @@ end
 
 function GM:PlayerSpawn(ply)
 	ply:SetModel( "models/player/odessa.mdl" )
+	ply:Give("weapon_crowbar")
+	ply:Give("weapon_physgun")
+	ply:Give("gmod_tool")
 end
 
-function GM:PlayerSetModel( ply )
-
+function GM:PlayerLoadout(ply)
+	if (ply:IsAdmin() || ply:IsSuperAdmin() ) then
+		ply:Give("weapon_physgun")
+		ply:Give("gmod_tool")
+	end
 end

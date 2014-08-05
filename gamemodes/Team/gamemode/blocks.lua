@@ -44,3 +44,8 @@ function BlockWeapon( ply, ent, info )
 	if !ply:IsSuperAdmin() then return false end
 end
 hook.Add( "PlayerSpawnWeapon", "BlockWeapon", BlockWeapon )
+
+function BlockProperty( ply, property, ent )
+	if !ply:IsSuperAdmin() then return false end
+end
+hook.Add( "CanProperty", "BlockProperty", BlockProperty )

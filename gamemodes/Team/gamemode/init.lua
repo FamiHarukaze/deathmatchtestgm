@@ -1,11 +1,13 @@
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
+AddCSLuaFile( "sh_playsound.lua")
 
 DeriveGamemode("sandbox")
 
 include( "shared.lua" )
 include( "teams.lua" )
 include( "blocks.lua" )
+include( "sh_playsound.lua")
 RunConsoleCommand("sv_alltalk 1")
 //Serverside stuff goes here
 local PlayerModels = {

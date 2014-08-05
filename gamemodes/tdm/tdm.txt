@@ -1,6 +1,6 @@
 "Gamemode"
 {
-	"base"		"base"
+	"base"		"sandbase"
 	"title"		"Team Deathmatch"
 	"maps"		""
 	"menusystem"	"1"

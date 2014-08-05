@@ -38,16 +38,17 @@ end
 
 function GM:PlayerSpawn(ply)
 	local PlyModel = table.Random(PlayerModels)
-    local RanTeam = math.random(1,3)
 	ply:SetModel(PlyModel)
+<<<<<<< HEAD:gamemodes/Team/gamemode/init.lua
 <<<<<<< HEAD:gamemodes/tdm/gamemode/init.lua
 	--ply:PrintMessage( HUD_PRINTTALK , "[DEBUG] You spawned as " .. PlyModel )
 =======
 	ply:PrintMessage( HUD_PRINTTALK , "[DEBUG] You spawned as " .. PlyModel )
 >>>>>>> origin/master:gamemodes/Team/gamemode/init.lua
+=======
+	ply:PrintMessage( HUD_PRINTTALK , "[DEBUG] You spawned as" .. PlyModel )
+>>>>>>> parent of 3ee83a7... added teams:gamemodes/tdm/gamemode/init.lua
 	ply:Give("weapon_crowbar")
-    ply:SetTeam(RanTeam)
-    ply:PrintMessage(HUD_PRINTTALK,"Spawned as a member of team" .. RanTeam)
 	if (ply:IsAdmin() || ply:IsSuperAdmin() ) then
 		ply:Give("weapon_physgun")
 		ply:Give("gmod_tool")

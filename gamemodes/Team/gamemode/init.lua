@@ -12,7 +12,6 @@ Model("models/player/Group01/Female_03.mdl"),
 Model("models/player/Group01/Female_04.mdl"),
 Model("models/player/Group01/Female_05.mdl"),
 Model("models/player/Group01/Female_06.mdl"),
-Model("models/player/Group01/Female_07.mdl"),
 Model("models/player/Group01/Male_01.mdl"),
 Model("models/player/Group01/male_02.mdl"),
 Model("models/player/Group01/male_03.mdl"),
@@ -40,7 +39,7 @@ end
 function GM:PlayerSpawn(ply)
 	local PlyModel = table.Random(PlayerModels)
 	ply:SetModel(PlyModel)
-	ply:PrintMessage( HUD_PRINTTALK , "[DEBUG] You spawned as" .. PlyModel )
+	ply:PrintMessage( HUD_PRINTTALK , "[DEBUG] You spawned as " .. PlyModel )
 	ply:Give("weapon_crowbar")
 	if (ply:IsAdmin() || ply:IsSuperAdmin() ) then
 		ply:Give("weapon_physgun")

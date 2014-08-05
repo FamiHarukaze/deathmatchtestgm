@@ -47,6 +47,8 @@ function GM:PlayerSpawn(ply)
 	ply:SetModel(PlyModel)
 	ply:GiveGamemodeWeapons()
 	ply:SetupHands()
+    ply:SetRunSpeed(500)
+    plt:SetWalkSpeed(300)
 end
 
 function GM:PlayerLoadout(ply)
@@ -75,12 +77,6 @@ function GM:PlayerSetHandsModel( ply, ent )
 		ent:SetSkin( info.skin )
 		ent:SetBodyGroups( info.body )
 	end
-
-end
-
-function playerSetSpeed(ply)
-
-	GAMEMODE:SetPlayerSpeed(ply, 250, 500)
 
 end
  

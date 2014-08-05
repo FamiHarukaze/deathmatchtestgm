@@ -41,6 +41,10 @@ function GM:PlayerAuthed(ply, SteamID, UniqueID)
 
 end
 
+function GM:PlayerDisconnected( ply )
+     PrintMessage( HUD_PRINTTALK, ply:Name().. " has left the server." )
+end
+
 function GM:PlayerInitialSpawn(ply)
 	local tm[ply] = math.random(1,3)
 	ply:SetGamemodeTeam(tm[ply])

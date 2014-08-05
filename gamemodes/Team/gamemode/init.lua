@@ -48,7 +48,7 @@ function GM:PlayerSpawn(ply)
 	ply:GiveGamemodeWeapons()
 	ply:SetupHands()
     ply:SetRunSpeed(500)
-    plt:SetWalkSpeed(300)
+    ply:SetWalkSpeed(300)
 end
 
 function GM:PlayerLoadout(ply)

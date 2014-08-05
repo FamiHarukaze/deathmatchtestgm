@@ -34,3 +34,5 @@ if (CLIENT) then
 	end
 	usermessage.Hook("SPlay", PlaySound)
 end
+
+print("Playsound loaded")

@@ -39,14 +39,15 @@ function GM:PlayerAuthed(ply, SteamID, UniqueID)
 end
 
 function GM:PlayerSpawn(ply)
-	local PlyModel = table.Random(PlayerModels)
     local RanTeam = math.random(1,3)
 	ply:SetGamemodeTeam( RanTeam )
+	local PlyModel = table.Random(PlayerModels)
 	ply:SetModel(PlyModel)
 	if (ply:IsAdmin() || ply:IsSuperAdmin() ) then
 		ply:Give("weapon_physgun")
 		ply:Give("gmod_tool")
 	end
+	ply:GiveGamemodeWeapons()
 end
 
 function GM:PlayerLoadout(ply)

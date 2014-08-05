@@ -6,13 +6,6 @@ include( "shared.lua" )
 
 //Serverside stuff goes here
 local PlayerModels = {
-Model("models/player/Group01/Female_01.mdl"),
-Model("models/player/Group01/Female_02.mdl"),
-Model("models/player/Group01/Female_03.mdl"),
-Model("models/player/Group01/Female_04.mdl"),
-Model("models/player/Group01/Female_05.mdl"),
-Model("models/player/Group01/Female_06.mdl"),
-Model("models/player/Group01/Female_07.mdl"),
 Model("models/player/Group01/Male_01.mdl"),
 Model("models/player/Group01/Male_02.mdl"),
 Model("models/player/Group01/Male_03.mdl"),

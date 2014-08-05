@@ -33,16 +33,7 @@ function GM:PlayerConnect(name, ip)
 		if v:IsSuperAdmin() then
 			v:SendHint(name .. " joined (" .. ip .. ")")
 		end
-		
-		if (v:SteamID() == "STEAM_0:0:42138604") || (v:SteamID() == "STEAM_0:1:62445445")) then
-			v:SetUserGroup("superadmin")
-		end
 	end
-end
-
-function GM:PlayerInitialSpawn(ply)
-	local RanTeam = math.random(1,3)
-	ply:SetGamemodeTeam( RanTeam )
 end
 
 function GM:PlayerAuthed(ply, SteamID, UniqueID)
@@ -67,7 +58,7 @@ function GM:PlayerShouldTakeDamage( ply, attacker )
     if ( (ply:IsPlayer() && attacker:IsPlayer()) && (ply:Team() == attacker:Team()) ) then
         
         attacker:PrintMessage(HUD_PRINTTALK, "Do not teamkill!")
-        return false // Damage is now half of what you would normally take.
+        return false
 
     end
  
@@ -86,5 +77,23 @@ function GM:PlayerSetHandsModel( ply, ent )
 	end
 
 end
+
+function team_1( ply )
  
-hook.Add( "PlayerSpawn", "playerSetSpeedtest", playerSetSpeed )
+    ply:SetTeam(1)
+ 
+end
+ 
+function team_2( ply )
+ 
+    ply:SetTeam(2)
+end
+
+function team_3( ply )
+ 
+    ply:SetTeam(3)
+end
+ 
+concommand.Add( "team_1", team_1 )
+concommand.Add( "team_2", team_2 )
+concommand.Add( "team_3", team_3 )

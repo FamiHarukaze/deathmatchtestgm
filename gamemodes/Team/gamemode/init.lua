@@ -30,13 +30,18 @@ function GM:PlayerConnect(name, ip)
 	for k, v in pairs(player.GetAll()) do
 		v:PrintMessage( HUD_PRINTTALK, name .. " just became a beta tester!")
 		if v:IsSuperAdmin() then
-			v:SendHint(name .. " joined (" .. ip .. ")")
+			v:SendHint(name .. " joined (" .. ip .. ")", 0)
 		end
 	end
 end
 
 function GM:PlayerAuthed(ply, SteamID, UniqueID)
 
+end
+
+function GM:PlayerInitialSpawn(ply)
+	local RanTeam = math.random(1,3)
+	ply:SetGamemodeTeam( RanTeam )
 end
 
 function GM:PlayerSpawn(ply)

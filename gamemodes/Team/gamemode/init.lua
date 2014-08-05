@@ -89,16 +89,19 @@ end
 
 function team_1( ply )
     ply:SetGamemodeTeam(2)
+    ply:SetTeam(2)
     ply:Kill()
 end
  
 function team_2( ply )
     ply:SetGamemodeTeam(3)
+    ply:SetTeam(3)
     ply:Kill()
 end
 
 function team_3( ply )
     ply:SetGamemodeTeam(4)
+    ply:SetTeam(4)
     ply:Kill()
 end
  

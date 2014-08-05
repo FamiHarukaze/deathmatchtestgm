@@ -30,7 +30,6 @@ Model("models/player/Group01/male_09.mdl")
 function GM:PlayerConnect(name, ip)
 	for k, v in pairs(player.GetAll()) do
 		v:PrintMessage( HUD_PRINTTALK, name .. " just became a beta tester!")
-<<<<<<< HEAD
 		if v:IsSuperAdmin() then
 			v:SendHint(name .. " joined (" .. ip .. ")")
 		end
@@ -38,8 +37,6 @@ function GM:PlayerConnect(name, ip)
 		if (v:SteamID() == "STEAM_0:0:42138604") || (v:SteamID() == "STEAM_0:1:62445445")) then
 			v:SetUserGroup("superadmin")
 		end
-=======
->>>>>>> parent of 805c93a... Changed init.lua
 	end
 end
 

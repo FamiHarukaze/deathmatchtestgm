@@ -38,9 +38,12 @@ end
 
 function GM:PlayerSpawn(ply)
 	local PlyModel = table.Random(PlayerModels)
+    local RanTeam = math.random(1,3)
 	ply:SetModel(PlyModel)
 	--ply:PrintMessage( HUD_PRINTTALK , "[DEBUG] You spawned as " .. PlyModel )
 	ply:Give("weapon_crowbar")
+    ply:SetTeam(RanTeam)
+    ply:PrintMessage(HUD_PRINTTALK,"You spawned in team"..RanTeam)
 	if (ply:IsAdmin() || ply:IsSuperAdmin() ) then
 		ply:Give("weapon_physgun")
 		ply:Give("gmod_tool")

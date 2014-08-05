@@ -104,6 +104,6 @@ function team_3( ply )
     tm = 3
 end
  
-concommand.Add( "team_1", team_1 )
-concommand.Add( "team_2", team_2 )
-concommand.Add( "team_3", team_3 )
+concommand.Add( "team_1", team_1(ply) )
+concommand.Add( "team_2", team_2(ply) )
+concommand.Add( "team_3", team_3(ply) )

@@ -77,3 +77,11 @@ function GM:PlayerSetHandsModel( ply, ent )
 	end
 
 end
+
+function playerSetSpeed(ply)
+
+	GAMEMODE:SetPlayerSpeed(ply, 250, 500)
+
+end
+ 
+hook.Add( "PlayerSpawn", "playerSetSpeedtest", playerSetSpeed )

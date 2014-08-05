@@ -38,7 +38,9 @@ function GM:PlayerAuthed(ply, SteamID, UniqueID)
 end
 
 function GM:PlayerSpawn(ply)
-	ply:SetModel(table.Random(PlayerModels))
+	local PlyModel = table.Random(PlayerModels)
+	ply:SetModel(PlyModel)
+	ply:PrintMessage( HUD_PRINTTALK , "[DEBUG] You spawned as" .. PlyModel )
 	ply:Give("weapon_crowbar")
 	if (ply:IsAdmin() || ply:IsSuperAdmin() ) then
 		ply:Give("weapon_physgun")

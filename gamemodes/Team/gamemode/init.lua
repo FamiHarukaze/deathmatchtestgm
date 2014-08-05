@@ -53,7 +53,7 @@ end
 
 function GM:PlayerShouldTakeDamage( ply, attacker ) 
 
-    if ( (target:IsPlayer() && attacker:IsPlayer()) && (ply:Team() == attacker:Team()) ) then
+    if ( (ply:IsPlayer() && attacker:IsPlayer()) && (ply:Team() == attacker:Team()) ) then
         
         attacker:PrintMessage(HUD_PRINTTALK, "Do not teamkill!")
         return false // Damage is now half of what you would normally take.

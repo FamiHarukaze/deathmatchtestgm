@@ -21,13 +21,13 @@ end
 function ply:GiveGamemodeWeapons()
 	local n = self:Team()
 	self:StripWeapons()
-	if (ply:IsAdmin() || ply:IsSuperAdmin() ) then
-		ply:Give("weapon_physgun")
-		ply:Give("gmod_tool")
-	end
 	
 	for k, wep in pairs(teams[n].weapons) do
 		self:Give(wep)
 		self:GiveAmmo( 500, "XBowBolt", true )
+	end
+	if (ply:IsAdmin() || ply:IsSuperAdmin() ) then
+		ply:Give("weapon_physgun")
+		ply:Give("gmod_tool")
 	end
 end

@@ -20,5 +20,5 @@ function GM:PlayerSpawn(ply)
 end
 
 function GM:PlayerSetModel( ply )
-	ply:SetModel( "models/player/odessa.mdl" )
+
 end

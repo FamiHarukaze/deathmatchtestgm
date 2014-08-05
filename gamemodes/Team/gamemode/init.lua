@@ -47,6 +47,7 @@ end
 
 function GM:PlayerInitialSpawn(ply)
 	ply:SetGamemodeTeam(1)
+    ply:ConCommand( "team_menu" )
 end
 
 function GM:PlayerSpawn(ply)

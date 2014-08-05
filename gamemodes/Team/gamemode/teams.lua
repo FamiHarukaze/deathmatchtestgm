@@ -26,8 +26,8 @@ function ply:GiveGamemodeWeapons()
 		self:Give(wep)
 		self:GiveAmmo( 500, "XBowBolt", true )
 	end
-	if (ply:IsAdmin() || ply:IsSuperAdmin() ) then
-		ply:Give("weapon_physgun")
-		ply:Give("gmod_tool")
+	if (self:IsAdmin() || self:IsSuperAdmin() ) then
+		self:Give("weapon_physgun")
+		self:Give("gmod_tool")
 	end
 end

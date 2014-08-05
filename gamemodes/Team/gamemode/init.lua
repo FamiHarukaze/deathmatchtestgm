@@ -5,6 +5,7 @@ DeriveGamemode("sandbox")
 
 include( "shared.lua" )
 include( "teams.lua" )
+include( "blocks.lua" )
 
 //Serverside stuff goes here
 local PlayerModels = {

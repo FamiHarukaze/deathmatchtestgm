@@ -27,11 +27,14 @@ Model("models/player/Group01/male_09.mdl")
 
 
 function GM:PlayerConnect(name, ip)
-
+	for k, v in pairs(player.GetAll()) do
+		v:PrintMessage( HUD_PRINTTALK, name .. " just became a beta tester!")
+	end
 end
 
 function GM:PlayerInitialSpawn(ply)
-
+	local RanTeam = math.random(1,3)
+	ply:SetGamemodeTeam( RanTeam )
 end
 
 function GM:PlayerAuthed(ply, SteamID, UniqueID)
@@ -39,17 +42,23 @@ function GM:PlayerAuthed(ply, SteamID, UniqueID)
 end
 
 function GM:PlayerSpawn(ply)
-    local RanTeam = math.random(1,3)
-	ply:SetGamemodeTeam( RanTeam )
 	local PlyModel = table.Random(PlayerModels)
 	ply:SetModel(PlyModel)
-	if (ply:IsAdmin() || ply:IsSuperAdmin() ) then
-		ply:Give("weapon_physgun")
-		ply:Give("gmod_tool")
-	end
 	ply:GiveGamemodeWeapons()
 end
 
 function GM:PlayerLoadout(ply)
+
+end
+
+function GM:PlayerShouldTakeDamage( ply, attacker ) 
+
+    if ( (target:IsPlayer() && attacker:IsPlayer()) && (ply:Team() == attacker:Team()) ) then
+ 
+        return false // Damage is now half of what you would normally take.
+
+    end
+ 
+    return true
 
 end

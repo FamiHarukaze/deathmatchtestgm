@@ -1,0 +1,11 @@
+ init.lua
+This file is called when the server loads the gamemode. The example below tells the resource system to send the two files to
+the client, and then loads shared.lua. 
+
+ shared.lua
+This file sets some common variables and creates the Initialize function. This is the only function you NEED to define. All others
+will be called from the base gamemode. 
+
+ cl_init.lua
+This file is called when the client loads the gamemode. You would put client specific things in here. We load shared.lua. Note
+that you can only 'include' files here that have been 'AddCSLuaFile'd on the server. 

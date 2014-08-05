@@ -64,7 +64,7 @@ end
 
 function GM:PlayerShouldTakeDamage( ply, attacker ) 
 
-    if ( (ply:IsPlayer() && attacker:IsPlayer()) && (ply:Team() == attacker:Team()) && !(ply:SteamID() == attacker:SteamID() ) then
+    if ( (ply:IsPlayer() && attacker:IsPlayer()) && (ply:Team() == attacker:Team()) && !(ply:SteamID() == attacker:SteamID()) ) then
         
         attacker:PrintMessage(HUD_PRINTTALK, "Do not teamkill!")
         return false

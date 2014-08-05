@@ -26,8 +26,6 @@ Model("models/player/Group01/male_08.mdl"),
 Model("models/player/Group01/male_09.mdl")
 }
 
-local tm = {}
-
 function GM:PlayerConnect(name, ip)
 	for k, v in pairs(player.GetAll()) do
 		v:PrintMessage( HUD_PRINTTALK, name .. " just became a beta tester!")
@@ -46,8 +44,8 @@ function GM:PlayerDisconnected( ply )
 end
 
 function GM:PlayerInitialSpawn(ply)
-	local tm[ply] = math.random(1,3)
-	ply:SetGamemodeTeam(tm[ply])
+	local tm = math.random(1,3)
+	ply:SetGamemodeTeam(tm)
 end
 
 function GM:PlayerSpawn(ply)
@@ -57,7 +55,7 @@ function GM:PlayerSpawn(ply)
 	ply:SetupHands()
     ply:SetRunSpeed(500)
     ply:SetWalkSpeed(300)
-    ply:SetGamemodeTeam(tm[ply])
+    ply:SetGamemodeTeam(tm)
 end
 
 function GM:PlayerLoadout(ply)
@@ -93,21 +91,21 @@ function team_1( ply )
  
     ply:SetTeam(1)
     ply:Kill()
-    tm[ply] = 1
+    tm = 1
 end
  
 function team_2( ply )
  
     ply:SetTeam(2)
     ply:Kill()
-    tm[ply] = 2
+    tm = 2
 end
 
 function team_3( ply )
  
     ply:SetTeam(3)
     ply:Kill()
-    tm[ply] = 3
+    tm = 3
 end
  
 concommand.Add( "team_1", team_1(ply) )

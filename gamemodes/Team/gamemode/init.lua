@@ -12,7 +12,6 @@ Model("models/player/Group01/Female_03.mdl"),
 Model("models/player/Group01/Female_04.mdl"),
 Model("models/player/Group01/Female_05.mdl"),
 Model("models/player/Group01/Female_06.mdl"),
-Model("models/player/Group01/Female_07.mdl"),
 Model("models/player/Group01/Male_01.mdl"),
 Model("models/player/Group01/male_02.mdl"),
 Model("models/player/Group01/male_03.mdl"),
@@ -41,7 +40,11 @@ function GM:PlayerSpawn(ply)
 	local PlyModel = table.Random(PlayerModels)
     local RanTeam = math.random(1,3)
 	ply:SetModel(PlyModel)
+<<<<<<< HEAD:gamemodes/tdm/gamemode/init.lua
 	--ply:PrintMessage( HUD_PRINTTALK , "[DEBUG] You spawned as " .. PlyModel )
+=======
+	ply:PrintMessage( HUD_PRINTTALK , "[DEBUG] You spawned as " .. PlyModel )
+>>>>>>> origin/master:gamemodes/Team/gamemode/init.lua
 	ply:Give("weapon_crowbar")
     ply:SetTeam(RanTeam)
     ply:PrintMessage(HUD_PRINTTALK,"Spawned as a member of team" .. RanTeam)

@@ -28,5 +28,6 @@ function ply:GiveGamemodeWeapons()
 	
 	for k, wep in pairs(teams[n].weapons) do
 		self:Give(wep)
+		self:GiveAmmo( 500, "XBowBolt", true )
 	end
 end

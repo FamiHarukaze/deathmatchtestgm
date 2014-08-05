@@ -7,6 +7,7 @@ function GM:Initialize()
 	self.BaseClass.Initialize( self )
 end
 
-team.SetUp( 1, "Team1", Color( 225, 125, 125, 255 ) )
-team.SetUp( 2, "Team2", Color( 125, 225, 125, 255 ) )
-team.SetUp( 3, "Team3", Color( 125, 125, 225, 255 ) )
+team.SetUp( 1, "UnDec", Color( 225, 255, 255, 255 ) )
+team.SetUp( 2, "Team1", Color( 125, 225, 125, 255 ) )
+team.SetUp( 3, "Team2", Color( 125, 125, 225, 255 ) )
+team.SetUp( 4, "Team3", Color( 255, 125, 125, 255,) )

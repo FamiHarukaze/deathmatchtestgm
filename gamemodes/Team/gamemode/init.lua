@@ -46,8 +46,7 @@ function GM:PlayerDisconnected( ply )
 end
 
 function GM:PlayerInitialSpawn(ply)
-	local tm = math.random(1,3)
-	ply:SetGamemodeTeam(tm)
+	ply:SetGamemodeTeam(1)
 end
 
 function GM:PlayerSpawn(ply)
@@ -57,7 +56,6 @@ function GM:PlayerSpawn(ply)
 	ply:SetupHands()
     ply:SetRunSpeed(500)
     ply:SetWalkSpeed(300)
-    ply:SetGamemodeTeam(tm)
 end
 
 function GM:PlayerLoadout(ply)
@@ -90,26 +88,20 @@ function GM:PlayerSetHandsModel( ply, ent )
 end
 
 function team_1( ply )
- 
-    ply:SetTeam(1)
+    ply:SetGamemodeTeam(2)
     ply:Kill()
-    tm = 1
 end
  
 function team_2( ply )
- 
-    ply:SetTeam(2)
+    ply:SetGamemodeTeam(3)
     ply:Kill()
-    tm = 2
 end
 
 function team_3( ply )
- 
-    ply:SetTeam(3)
+    ply:SetGamemodeTeam(4)
     ply:Kill()
-    tm = 3
 end
  
-concommand.Add( "team_1", team_1(ply) )
-concommand.Add( "team_2", team_2(ply) )
-concommand.Add( "team_3", team_3(ply) )
+concommand.Add( "team_1", team_1 )
+concommand.Add( "team_2", team_2 )
+concommand.Add( "team_3", team_3 )

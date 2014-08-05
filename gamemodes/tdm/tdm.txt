@@ -2,10 +2,10 @@
 {
 	"base"		"base"
 	"title"		"Team Deathmatch"
+	"maps"		""
 	"menusystem"	"1"
-
+	"workshopid"	""
+	
 	"settings"
-	{
 
-	}
 }

@@ -8,7 +8,7 @@
 
 if (SERVER) then
 	local function SendUM(ply,snd)
-		umsg.Start("HSP.SPS", ply)
+		umsg.Start("SPlay", ply)
 			umsg.String(snd)
 		umsg.End()
 	end
@@ -18,7 +18,7 @@ if (SERVER) then
 		SendUM(self,snd)
 	end
 	
-	function HSP.SPS(ply,snd)
+	function SPlay(ply,snd)
 		if type(ply) == "string" then
 			SendUM(nil,ply)
 		else
@@ -32,5 +32,5 @@ if (CLIENT) then
 	local function PlaySound(um)
 		surface.PlaySound( um:ReadString() )
 	end
-	usermessage.Hook("HSP.SPS", PlaySound)
+	usermessage.Hook("SPlay", PlaySound)
 end

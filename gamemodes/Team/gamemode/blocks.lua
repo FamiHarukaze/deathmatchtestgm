@@ -49,3 +49,13 @@ function BlockProperty( ply, property, ent )
 	if !ply:IsSuperAdmin() then return false end
 end
 hook.Add( "CanProperty", "BlockProperty", BlockProperty )
+
+function BlockSWEP( ply, class, swep)
+    if !ply:IsSuperAdmin() then return false end
+end
+hook.Add("PlayerSpawnSWEP", "BlockSwep", BlockSWEP)
+
+function BlockSWEPGive( ply, class, swep)
+    if !ply:IsSuperAdmin() then return false end
+end
+hook.Add("PlayerGiveSWEP", "BlockSWEPGive", BlockSWEPGive)

@@ -8,6 +8,7 @@ include( "shared.lua" )
 include( "teams.lua" )
 include( "blocks.lua" )
 include( "sh_playsound.lua")
+
 RunConsoleCommand("sv_alltalk 1")
 //Serverside stuff goes here
 local PlayerModels = {
@@ -109,3 +110,25 @@ end
 concommand.Add( "team_1", team_1 )
 concommand.Add( "team_2", team_2 )
 concommand.Add( "team_3", team_3 )
+
+-- Death handling
+local maxdeathtime = 10;
+ 
+function player_initdeath( ply, wep, killer )
+ 
+     ply.nextspawn = CurTime() + maxdeathtime;
+     ply:PrintMessage(HUD_PRINTTALK,"You have been killed by " .. killer:Nick() .. " you will respawn in 10 seconds")
+ 
+end
+hook.Add( "PlayerDeath", "player_initalize_dvars", player_initdeath );
+ 
+function playerforcerespawn( ply )
+ 
+     if (CurTime()>=ply.nextspawn) then
+          ply:Spawn()
+          ply.nextspawn = math.huge
+     end
+     
+end
+ 
+hook.Add( "PlayerDeathThink", "player_step_forcespawn", playerforcerespawn );

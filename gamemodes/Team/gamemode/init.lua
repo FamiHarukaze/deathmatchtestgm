@@ -115,7 +115,7 @@ function player_initdeath( ply, wep, killer )
  
      ply.nextspawn = CurTime() + maxdeathtime;
      ply:PrintMessage(HUD_PRINTTALK,"You have been killed by " .. killer:Nick() .. ", He had " .. killer:Health() .. "HP left.")
-	 ply:PrintMessage(HUD_PRINTTALK,"You will respawn in 10 seconds!")
+	 ply:PrintMessage(HUD_PRINTTALK,"You will auto-respawn in 10 seconds!")
 end
 hook.Add( "PlayerDeath", "player_initalize_dvars", player_initdeath );
  

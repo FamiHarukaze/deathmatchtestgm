@@ -33,7 +33,7 @@ hook.Add( "PlayerSpawnEffect", "BlockEffect", BlockEffect )
 function BlockObject( ply, model, skin )
 	if !ply:IsSuperAdmin() then return false end
 end
-//hook.Add( "PlayerSpawnObject", "BlockObject", BlockObject )
+hook.Add( "PlayerSpawnObject", "BlockObject", BlockObject )
 
 function BlockTool( ply, tr, tool )
 	if !ply:IsSuperAdmin() then return false end

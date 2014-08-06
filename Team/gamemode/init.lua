@@ -1,13 +1,13 @@
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
-AddCSLuaFile( "sh_playsound.lua")
+AddCSLuaFile( "sh_playsound.lua" )
 
 DeriveGamemode("sandbox")
 
 include( "shared.lua" )
 include( "teams.lua" )
 include( "blocks.lua" )
-include( "sh_playsound.lua")
+include( "sh_playsound.lua" )
 
 RunConsoleCommand("sv_alltalk", "1")
 //Serverside stuff goes here
@@ -39,11 +39,13 @@ function GM:PlayerConnect(name, ip)
 end
 
 function GM:PlayerAuthed(ply, SteamID, UniqueID)
-
+     PrintMessage( HUD_PRINTTALK, ply:Name().. " was authenticated with steam")
+     PrintMessage( HUD_PRINTTALK, ply:Name().. "'s SteamID is " .. ply:SteamID())
+     PrintMessage( HUD_PRINTTALK, ply:Name().. "'s UniqueID is " .. ply:UniqueID())
 end
 
 function GM:PlayerDisconnected( ply )
-     PrintMessage( HUD_PRINTTALK, ply:Name().. " has left the server." )
+     PrintMessage( HUD_PRINTTALK, ply:Name().. " has left the server" )
 end
 
 function GM:PlayerInitialSpawn(ply)
@@ -56,8 +58,8 @@ function GM:PlayerSpawn(ply)
 	ply:SetModel(PlyModel)
 	ply:GiveGamemodeWeapons()
 	ply:SetupHands()
-    ply:SetRunSpeed(500)
-    ply:SetWalkSpeed(300)
+    ply:SetRunSpeed(440)
+    ply:SetWalkSpeed(400)
 end
 
 function GM:PlayerLoadout(ply)
@@ -68,7 +70,7 @@ function GM:PlayerShouldTakeDamage( ply, attacker )
 
     if ( (ply:IsPlayer() && attacker:IsPlayer()) && (ply:Team() == attacker:Team()) && !(ply:SteamID() == attacker:SteamID()) ) then
         
-        attacker:PrintMessage(HUD_PRINTTALK, "Do not teamkill!")
+        attacker:PrintMessage( HUD_PRINTTALK, "Do not teamkill")
         return false
 
     end
@@ -103,16 +105,23 @@ function team_3( ply )
     ply:SetGamemodeTeam(4)
     ply:Kill()
 end
+
+function team_r( ply )
+    local r = math.random(2,4)
+    ply:SetGamemodeTeam(r)
+    ply:Kill()
+end 
  
 concommand.Add( "team_1", team_1 )
 concommand.Add( "team_2", team_2 )
 concommand.Add( "team_3", team_3 )
+concommand.Add( "team_r", team_r )
 
 -- Death handling
 local maxdeathtime = 5;
  
 function player_initdeath( ply, wep, killer )
- 
+     
      ply.nextspawn = CurTime() + maxdeathtime;
 	 if !(killer:IsPlayer()) then 
 		ply:PrintMessage(HUD_PRINTTALK, "You were killed by the world")

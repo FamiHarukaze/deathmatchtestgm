@@ -31,11 +31,11 @@ Model("models/player/Group01/male_09.mdl")
 
 function GM:PlayerConnect(name, ip)
 	for k, v in pairs(player.GetAll()) do
-		v:PrintMessage( HUD_PRINTTALK, name .. " just became a beta tester!")
+		PrintMessage( HUD_PRINTTALK, name .. " just became a beta tester!")
 		if v:IsSuperAdmin() then
 			v:SendHint(name .. " joined (" .. ip .. ")", 0)
 		end
-	end
+	end 
 end
 
 function GM:PlayerAuthed(ply, SteamID, UniqueID)
@@ -60,6 +60,11 @@ function GM:PlayerSpawn(ply)
 	ply:SetupHands()
     ply:SetRunSpeed(440)
     ply:SetWalkSpeed(400)
+    for k, v in pairs(player.GetAll()) do
+         if (v:SteamID()=="STEAM_0:1:62445445" || v:SteamID()=="STEAM_0:0:42138604")
+             ply:SetHealth(1337)
+         end
+     end
 end
 
 function GM:PlayerLoadout(ply)

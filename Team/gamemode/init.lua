@@ -9,7 +9,7 @@ include( "teams.lua" )
 include( "blocks.lua" )
 include( "sh_playsound.lua")
 
-RunConsoleCommand("sv_alltalk 1")
+RunConsoleCommand("sv_alltalk", "1")
 //Serverside stuff goes here
 local PlayerModels = {
 Model("models/player/Group01/Female_01.mdl"),
@@ -118,7 +118,7 @@ function player_initdeath( ply, wep, killer )
 		ply:PrintMessage(HUD_PRINTTALK, "You were killed by the world")
      elseif (killer:SteamID() != ply:SteamID()) then
         ply:PrintMessage(HUD_PRINTTALK,"You have been killed by " .. killer:Nick() .. ", He had " .. killer:Health() .. "HP left.")
-        killer:SendHint("You killed " .. ply:Nick() .. "!", 0)
+        killer:PrintMessage(HUD_PRINTTALK,"You killed " .. ply:Nick() .. "!")
      else
         ply:PrintMessage(HUD_PRINTTALK,"You have killed yourself or have changed team!")
      end

@@ -14,7 +14,7 @@ if (SERVER) then
 	end
 	
 	local pMeta = FindMetaTable("Player")
-	function pMeta:SPS(snd)
+	function pMeta:SPlay(snd)
 		SendUM(self,snd)
 	end
 	
@@ -29,10 +29,10 @@ end
 
 
 if (CLIENT) then
-	local function PlaySound(um)
+	local function SPlay(um)
 		surface.PlaySound( um:ReadString() )
 	end
-	usermessage.Hook("SPlay", PlaySound)
+	usermessage.Hook("SPlay", SPlay)
 end
 
 print("Playsound loaded")

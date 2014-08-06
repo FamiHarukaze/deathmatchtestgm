@@ -116,12 +116,11 @@ function player_initdeath( ply, wep, killer )
      ply.nextspawn = CurTime() + maxdeathtime;
 	 if !(killer:IsPlayer()) then 
 		ply:PrintMessage(HUD_PRINTTALK, "You were killed by the world")
-	 end
-	 
-     if (killer:SteamID() != ply:SteamID()) then
+     elseif (killer:SteamID() != ply:SteamID()) then
         ply:PrintMessage(HUD_PRINTTALK,"You have been killed by " .. killer:Nick() .. ", He had " .. killer:Health() .. "HP left.")
+        killer:SendHint("You killed " .. ply:Nick() .. "!", 0)
      else
-        ply:PrintMessage(HUD_PRINTTALK,"You have killed youself or have changed team!")
+        ply:PrintMessage(HUD_PRINTTALK,"You have killed yourself or have changed team!")
      end
      ply:PrintMessage(HUD_PRINTTALK,"You will auto-respawn in 5 seconds!")
 end

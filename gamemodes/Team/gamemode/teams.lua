@@ -26,7 +26,7 @@ function ply:GiveGamemodeWeapons()
 	for k, wep in pairs(teams[n].weapons) do
 		self:Give(wep)
 	end
-	self:GiveAmmo( 500, "XBowBolt", true )
+	self:SetAmmo( 500, "XBowBolt", true )
 	if (self:IsAdmin() || self:IsSuperAdmin() ) then
 		self:Give("weapon_physgun")
 		self:Give("gmod_tool")

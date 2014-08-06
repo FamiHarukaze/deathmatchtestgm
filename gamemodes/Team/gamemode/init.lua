@@ -114,6 +114,10 @@ local maxdeathtime = 10;
 function player_initdeath( ply, wep, killer )
  
      ply.nextspawn = CurTime() + maxdeathtime;
+	 if !(killer:IsPlayer()) then 
+	 ply:PrintMessage(HUD_PRINTTALK, "You were killed by the world")
+	 end
+	 
      if (killer:SteamID() != ply:SteamID()) then
         ply:PrintMessage(HUD_PRINTTALK,"You have been killed by " .. killer:Nick() .. ", He had " .. killer:Health() .. "HP left.")
         ply:PrintMessage(HUD_PRINTTALK,"You will auto-respawn in 10 seconds!")

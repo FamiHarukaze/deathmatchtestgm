@@ -91,19 +91,16 @@ end
 
 function team_1( ply )
     ply:SetGamemodeTeam(2)
-    ply:SetTeam(2)
     ply:Kill()
 end
  
 function team_2( ply )
     ply:SetGamemodeTeam(3)
-    ply:SetTeam(3)
     ply:Kill()
 end
 
 function team_3( ply )
     ply:SetGamemodeTeam(4)
-    ply:SetTeam(4)
     ply:Kill()
 end
  
@@ -117,8 +114,8 @@ local maxdeathtime = 10;
 function player_initdeath( ply, wep, killer )
  
      ply.nextspawn = CurTime() + maxdeathtime;
-     ply:PrintMessage(HUD_PRINTTALK,"You have been killed by " .. killer:Nick() .. " you will respawn in 10 seconds")
- 
+     ply:PrintMessage(HUD_PRINTTALK,"You have been killed by " .. killer:Nick() .. ", He had " .. killer:Health() .. "HP left.")
+	 ply:PrintMessage(HUD_PRINTTALK,"You will respawn in 10 seconds!")
 end
 hook.Add( "PlayerDeath", "player_initalize_dvars", player_initdeath );
  

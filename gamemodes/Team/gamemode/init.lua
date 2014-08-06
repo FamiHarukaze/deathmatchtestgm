@@ -129,13 +129,9 @@ hook.Add( "PlayerDeath", "player_initalize_dvars", player_initdeath );
  
 function playerforcerespawn( ply )
  
-     if (CurTime()>=ply.nextspawn && killer:IsPlayer()) then
+     if (CurTime()>=ply.nextspawn) then
           ply:Spawn()
           ply.nextspawn = math.huge
-          
-     elseif (!killer:IsPlayer()) then
-          ply:Spawn()
-          
      else 
           return false
      end

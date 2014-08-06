@@ -109,7 +109,7 @@ concommand.Add( "team_2", team_2 )
 concommand.Add( "team_3", team_3 )
 
 -- Death handling
-local maxdeathtime = 10;
+local maxdeathtime = 5;
  
 function player_initdeath( ply, wep, killer )
  
@@ -123,16 +123,23 @@ function player_initdeath( ply, wep, killer )
      else
         ply:PrintMessage(HUD_PRINTTALK,"You have killed youself or have changed team!")
      end
-     ply:PrintMessage(HUD_PRINTTALK,"You will auto-respawn in 10 seconds!")
+     ply:PrintMessage(HUD_PRINTTALK,"You will auto-respawn in 5 seconds!")
 end
 hook.Add( "PlayerDeath", "player_initalize_dvars", player_initdeath );
  
 function playerforcerespawn( ply )
  
-     if (CurTime()>=ply.nextspawn) then
+     if (CurTime()>=ply.nextspawn && killer:IsPlayer()) then
           ply:Spawn()
           ply.nextspawn = math.huge
+          
+     elseif (!killer:IsPlayer()) then
+          ply:Spawn()
+          
+     else 
+          return false
      end
+     
      
 end
  

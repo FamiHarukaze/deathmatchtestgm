@@ -9,7 +9,7 @@ include( "shared.lua" )
 include( "teams.lua" )
 include( "blocks.lua" )
 include( "sh_SsP.lua" )
-include( "utsound.lua" )
+include( "utsounds.lua" )
 include( "database/database.lua" )
 
 RunConsoleCommand("sv_alltalk", "1")
@@ -49,6 +49,9 @@ end
 
 function GM:PlayerDisconnected( ply )
      PrintMessage( HUD_PRINTTALK, ply:Name().. " has left the server" )
+     if (!ply:Alive()) then
+         SPlayAll("hsp/quake/ragequit.mp3")
+     end
 end
 
 function GM:PlayerInitialSpawn(ply)

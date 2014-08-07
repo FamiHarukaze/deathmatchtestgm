@@ -123,8 +123,10 @@ function team_r( ply )
 end 
 
 function stuck( ply )
-    ply:KillSilent()
-    ply:Spawn()
+	if (ply:Alive) then
+		ply:KillSilent()
+		ply:Spawn()
+	end
 end
 
 concommand.Add( "stuck" , stuck )

@@ -1,3 +1,20 @@
+resource.AddFile("sound/hsp/quake/dominating.wav")
+resource.AddFile("sound/hsp/quake/doublekill.mp3")
+resource.AddFile("sound/hsp/quake/triplekill.mp3")
+resource.AddFile("sound/hsp/quake/firstblood.wav")
+resource.AddFile("sound/hsp/quake/godlike.wav")
+resource.AddFile("sound/hsp/quake/headshot.wav")
+resource.AddFile("sound/hsp/quake/holyshit.mp3")
+resource.AddFile("sound/hsp/quake/killingspree.wav")
+resource.AddFile("sound/hsp/quake/ludricouskill.wav")
+resource.AddFile("sound/hsp/quake/monsterkill.wav")
+resource.AddFile("sound/hsp/quake/multikill.wav")
+resource.AddFile("sound/hsp/quake/rampage.wav")
+resource.AddFile("sound/hsp/quake/ultrakill.wav")
+resource.AddFile("sound/hsp/quake/unstoppable.wav")
+resource.AddFile("sound/hsp/quake/wickedsick.wav")
+resource.AddFile("sound/hsp/quake/headhunter.wav")
+
 function unrealsound(victim, inflictor, killer)
 	if !(victim:IsNPC()) && !(killer == victim) then
 		if (killer.unreal_stats) then

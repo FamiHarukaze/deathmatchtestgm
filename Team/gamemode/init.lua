@@ -42,8 +42,8 @@ end
 
 function GM:PlayerAuthed(ply, SteamID, UniqueID)
      PrintMessage( HUD_PRINTTALK, ply:Name().. " was authenticated with steam")
-     PrintMessage( HUD_PRINTTALK, ply:Name().. "'s SteamID is " .. ply:SteamID())
-     PrintMessage( HUD_PRINTTALK, ply:Name().. "'s UniqueID is " .. ply:UniqueID())
+     //PrintMessage( HUD_PRINTTALK, ply:Name().. "'s SteamID is " .. ply:SteamID())
+     //PrintMessage( HUD_PRINTTALK, ply:Name().. "'s UniqueID is " .. ply:UniqueID())
 end
 
 function GM:PlayerDisconnected( ply )
@@ -63,6 +63,7 @@ function GM:PlayerSpawn(ply)
     ply:SetRunSpeed(440)
     ply:SetWalkSpeed(400)
     SPlay(ply,"/hsp/weapon_pickup.wav" )
+	ply:SetGamemodeSpawn()
     --for k, v in pairs(player.GetAll()) do
     --     if (v:SteamID()=="STEAM_0:1:62445445" || v:SteamID()=="STEAM_0:0:42138604") then
     --         ply:SetHealth(1337)

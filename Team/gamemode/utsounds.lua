@@ -29,7 +29,7 @@ function unrealsound(victim, inflictor, killer)
 				SPlayAll("hsp/quake/unstoppable.wav")
 			elseif killer.unreal_stats.Kills == 25 then
 				SPlayAll("hsp/quake/godlike.wav")
-			elseif killer.unreal_stats.Kills == 30 then
+			elseif killer.unreal_stats.Kills >= 30 then
 				SPlayAll("hsp/quake/wickedsick.wav")
 			end
 		end
@@ -63,13 +63,14 @@ end
 hook.Add("Think", "unreal_Think", unreal_Think)
 
 function unreal_DetectHitgroup(ply, hitgroup, dmginfo)
-	if (dmginfo:GetAttacker():IsPlayer()) then
+	if ( dmginfo:GetAttacker():IsPlayer()) then
 		if (dmginfo:GetDamage() >= ply:Health()) then
 			if (hitgroup == HITGROUP_HEAD) then
-				SPlayAll("hsp/quake/headshot.wav")
 				dmginfo:GetAttacker().unreal_stats.Headshots = dmginfo:GetAttacker().unreal_stats.Headshots + 1
-				if dmginfo:GetAttacker().unreal_stats.Headshots == 15 then
+				if dmginfo:GetAttacker().unreal_stats.Headshots >= 15 then
 					SPlayAll("hsp/quake/headhunter.wav")
+				else
+					SPlayAll("hsp/quake/headshot.wav")
 				end
 			end
 		end

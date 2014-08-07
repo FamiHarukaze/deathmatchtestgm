@@ -29,7 +29,7 @@ function ply:databaseNetworkedData()
 end
 
 function ply:databasePath()
-	return "garrysmod/tdmgmdatabase/" ..self:ShortSteamID().. ".txt"
+	return "tdmgmdatabase/" ..self:ShortSteamID().. ".txt"
 end
 
 function ply:databaseSet( tab )

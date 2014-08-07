@@ -1,6 +1,7 @@
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "sh_SsP.lua" )
+AddCSLuaFile("database/cl_database.lua")
 
 DeriveGamemode("sandbox")
 
@@ -8,6 +9,7 @@ include( "shared.lua" )
 include( "teams.lua" )
 include( "blocks.lua" )
 include( "sh_SsP.lua" )
+include( "database/database.lua" )
 
 RunConsoleCommand("sv_alltalk", "1")
 //Serverside stuff goes here

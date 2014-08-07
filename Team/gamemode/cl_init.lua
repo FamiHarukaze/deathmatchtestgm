@@ -2,6 +2,7 @@ include( "shared.lua" )
 include( "sh_SsP.lua" )
 
 AddCSLuaFile( "sh_SsP.lua" )
+AddCSLuaFile( "database/cl_database.lua" )
 DeriveGamemode("sandbox")
 
 print("Clientside lua startup")

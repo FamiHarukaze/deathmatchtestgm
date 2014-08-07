@@ -125,7 +125,7 @@ function team_r( ply )
 end 
 
 function stuck( ply )
-	if (ply:Alive) then
+	if (ply:Alive()) then
 		ply:KillSilent()
 		ply:Spawn()
 	end

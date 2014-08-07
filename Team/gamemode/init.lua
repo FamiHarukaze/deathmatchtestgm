@@ -56,7 +56,7 @@ function GM:PlayerInitialSpawn(ply)
     ply:ConCommand( "team_menu" )
 end
 
-function PlayerSpawn1()
+function GM:PlayerSpawn(ply)
 	local PlyModel = table.Random(PlayerModels)
 	ply:SetModel(PlyModel)
 	ply:GiveGamemodeWeapons()
@@ -71,7 +71,6 @@ function PlayerSpawn1()
     --     end
     -- end
 end
-hook.Add("PlayerSpawn", "PlayerSpawn", PlayerSpawn1)
 
 function GM:PlayerLoadout(ply)
 

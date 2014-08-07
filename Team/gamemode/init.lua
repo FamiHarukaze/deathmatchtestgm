@@ -57,17 +57,12 @@ end
 
 function GM:PlayerSpawn(ply)
 	local PlyModel = table.Random(PlayerModels)
-    local SSR = math.random(0,1)
 	ply:SetModel(PlyModel)
 	ply:GiveGamemodeWeapons()
 	ply:SetupHands()
     ply:SetRunSpeed(440)
     ply:SetWalkSpeed(400)
-    if (SSR) then
-        SPlay(ply,"/hsp/asgard_beam1.mp3" )
-    else
-        SPlay(ply,"/hsp/asgard_beam2.mp3" )
-    end
+    SPlay(ply,"/hsp/weapon_pickup.wav" )
     --for k, v in pairs(player.GetAll()) do
     --     if (v:SteamID()=="STEAM_0:1:62445445" || v:SteamID()=="STEAM_0:0:42138604") then
     --         ply:SetHealth(1337)
@@ -125,7 +120,13 @@ function team_r( ply )
     ply:SetGamemodeTeam(r)
     ply:Kill()
 end 
- 
+
+function stuck( ply )
+    ply:KillSilent()
+    ply:Spawn()
+end
+
+concommand.Add( "stuck" , stuck )
 concommand.Add( "team_1", team_1 )
 concommand.Add( "team_2", team_2 )
 concommand.Add( "team_3", team_3 )

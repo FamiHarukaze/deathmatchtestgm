@@ -7,7 +7,7 @@ DeriveGamemode("sandbox")
 
 print("Clientside lua startup")
 
-function set_team()
+function set_team(ply)
  
 local frame = vgui.Create( "DFrame" )
 frame:SetPos( ScrW() / 2, ScrH() / 2 ) --Set the window in the middle of the players screen/game window

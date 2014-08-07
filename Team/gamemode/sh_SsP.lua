@@ -5,12 +5,9 @@
 
 */
 
-print("Ss.P loaded!")
-
 if (SERVER) then
 	util.AddNetworkString( "SPlayAll" )
 	util.AddNetworkString( "SPlay" )
-	util.AddNetworkString( "Example1" )
 	
 	function SPlay(ply, msg)
 		net.Start( "SPlay" )
@@ -23,18 +20,14 @@ if (SERVER) then
 			net.WriteString( msg )
 		net.Broadcast()
 	end
-	function NetExample()
-	net.Start( "Example1" )
-        net.WriteTable( "Hello" )
-    net.Broadcast() 
-	end
 	
-	print("Ss.P loaded serverside!")
+	//print("Ss.P loaded serverside!")
 end
 
 if (CLIENT) then
 	net.Receive( "SPlay", function( len )
-		surface.PlaySound( net.ReadString() )
+		local sound = net.ReadString()
+		surface.PlaySound( Sound(sound) )
 	end)
    
     net.Receive( "SPlayAll", function( len )
@@ -42,10 +35,5 @@ if (CLIENT) then
         surface.PlaySound( Sound(sound) )
 	end)
 	
-	net.Receive( "Example1", function( len )
-       print( "EXAMPLE 1: Received message ( " .. len .. " bits )" )
-       print( net.ReadString() )   
-   end)
-	
-	print("Ss.P loaded clientside!")
+	//print("Ss.P loaded clientside!")
 end

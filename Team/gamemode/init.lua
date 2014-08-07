@@ -9,6 +9,7 @@ include( "shared.lua" )
 include( "teams.lua" )
 include( "blocks.lua" )
 include( "sh_SsP.lua" )
+include( "utsound.lua" )
 include( "database/database.lua" )
 
 RunConsoleCommand("sv_alltalk", "1")
@@ -55,7 +56,7 @@ function GM:PlayerInitialSpawn(ply)
     ply:ConCommand( "team_menu" )
 end
 
-function GM:PlayerSpawn(ply)
+function PlayerSpawn1()
 	local PlyModel = table.Random(PlayerModels)
 	ply:SetModel(PlyModel)
 	ply:GiveGamemodeWeapons()
@@ -70,6 +71,7 @@ function GM:PlayerSpawn(ply)
     --     end
     -- end
 end
+hook.Add("PlayerSpawn", "PlayerSpawn", PlayerSpawn1)
 
 function GM:PlayerLoadout(ply)
 

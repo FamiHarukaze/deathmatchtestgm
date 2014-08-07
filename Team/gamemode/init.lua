@@ -33,7 +33,7 @@ Model("models/player/Group01/male_09.mdl")
 
 function GM:PlayerConnect(name, ip)
 	for k, v in pairs(player.GetAll()) do
-		PrintMessage( HUD_PRINTTALK, name .. " just became a beta tester!")
+		v:PrintMessage( HUD_PRINTTALK, name .. " just became a beta tester!")
 		if v:IsSuperAdmin() then
 			v:SendHint(name .. " joined (" .. ip .. ")", 0)
 		end
@@ -57,11 +57,17 @@ end
 
 function GM:PlayerSpawn(ply)
 	local PlyModel = table.Random(PlayerModels)
+    local SSR = math.random(0,1)
 	ply:SetModel(PlyModel)
 	ply:GiveGamemodeWeapons()
 	ply:SetupHands()
     ply:SetRunSpeed(440)
     ply:SetWalkSpeed(400)
+    if (SSR) then
+        SPlay(ply,"/hsp/asgard_beam1.mp3" )
+    else
+        SPlay(ply,"/hsp/asgard_beam2.mp3" )
+    end
     --for k, v in pairs(player.GetAll()) do
     --     if (v:SteamID()=="STEAM_0:1:62445445" || v:SteamID()=="STEAM_0:0:42138604") then
     --         ply:SetHealth(1337)
@@ -78,6 +84,7 @@ function GM:PlayerShouldTakeDamage( ply, attacker )
     if ( (ply:IsPlayer() && attacker:IsPlayer()) && (ply:Team() == attacker:Team()) && !(ply:SteamID() == attacker:SteamID()) ) then
         
         attacker:PrintMessage( HUD_PRINTTALK, "Do not teamkill")
+        SPlay(attacker, "/hsp/quake/teamkiller.mp3")
         return false
 
     end

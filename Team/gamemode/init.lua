@@ -13,6 +13,7 @@ include( "utsounds.lua" )
 include( "database/database.lua" )
 
 RunConsoleCommand("sv_alltalk", "1")
+RunConsoleCommand("cl_cmdrate", "66")
 //Serverside stuff goes here
 local PlayerModels = {
 Model("models/player/Group01/Female_01.mdl"),

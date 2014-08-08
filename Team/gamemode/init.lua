@@ -177,3 +177,12 @@ function playerforcerespawn( ply )
 end
  
 hook.Add( "PlayerDeathThink", "player_step_forcespawn", playerforcerespawn );
+
+
+function ProperFallDamage(ply,speed)
+	local gravity = GetConVarNumber("sv_gravity") // Thanks HeX
+	local falldmg = GetConVarNumber("mp_falldamage")
+	
+	return (speed-580) * falldmg * (gravity)/600
+end
+hook.Add("GetFallDamage", "ProperFallDamage", ProperFallDamage)

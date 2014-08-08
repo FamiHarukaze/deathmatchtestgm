@@ -157,7 +157,9 @@ function player_initdeath( ply, wep, killer )
      elseif (killer:SteamID() != ply:SteamID()) then
         ply:PrintMessage(HUD_PRINTTALK,"You have been killed by " .. killer:Nick() .. ", He had " .. killer:Health() .. "HP left.")
         killer:PrintMessage(HUD_PRINTTALK,"You killed " .. ply:Nick() .. "!")
-		killer:SetHealth(killer:Health() + 5)
+		if killer:Health() < 96 then
+			killer:SetHealth(killer:Health() + 5)
+		end
      else
         ply:PrintMessage(HUD_PRINTTALK,"You have killed yourself or have changed team!")
      end

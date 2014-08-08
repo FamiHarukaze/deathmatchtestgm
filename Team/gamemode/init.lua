@@ -10,6 +10,7 @@ include( "teams.lua" )
 include( "blocks.lua" )
 include( "sh_SsP.lua" )
 include( "utsounds.lua" )
+include( "chat.lua" )
 include( "database/database.lua" )
 include( "chat.lua" )
 

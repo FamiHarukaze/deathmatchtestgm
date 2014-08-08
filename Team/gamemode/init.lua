@@ -80,6 +80,7 @@ function GM:PlayerSpawn(ply)
     --         ply:SetHealth(1337)
     --     end
     -- end
+	ply:AllowFlashlight( true ) 
 end
 
 function GM:PlayerLoadout(ply)

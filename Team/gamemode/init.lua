@@ -11,6 +11,7 @@ include( "blocks.lua" )
 include( "sh_SsP.lua" )
 include( "utsounds.lua" )
 include( "database/database.lua" )
+include( "chat.lua" )
 
 RunConsoleCommand("sv_alltalk", "1")
 RunConsoleCommand("cl_cmdrate", "66")
@@ -67,8 +68,12 @@ function GM:PlayerSpawn(ply)
 	ply:SetupHands()
     ply:SetRunSpeed(440)
     ply:SetWalkSpeed(400)
-    SPlay(ply,"/hsp/weapon_pickup.wav" )
 	ply:SetGamemodeSpawn()
+    if (ply:Team() == 1) then
+        SPlay(ply, "/hsp/quake/preparetofight.wav")
+    else
+        SPlay(ply, "/hsp/weapon_pickup.wav" )
+    end
     --for k, v in pairs(player.GetAll()) do
     --     if (v:SteamID()=="STEAM_0:1:62445445" || v:SteamID()=="STEAM_0:0:42138604") then
     --         ply:SetHealth(1337)
@@ -85,7 +90,7 @@ function GM:PlayerShouldTakeDamage( ply, attacker )
     if ( (ply:IsPlayer() && attacker:IsPlayer()) && (ply:Team() == attacker:Team()) && !(ply:SteamID() == attacker:SteamID()) ) then
         
         attacker:PrintMessage( HUD_PRINTTALK, "Do not teamkill")
-        SPlay(attacker, "/hsp/quake/teamkiller.mp3")
+        SPlay(attacker, "/hsp/quake/teamkiller.wav")
         return false
 
     end

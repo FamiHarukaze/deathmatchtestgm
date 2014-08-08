@@ -1,7 +1,7 @@
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "sh_SsP.lua" )
-AddCSLuaFile("database/cl_database.lua")
+AddCSLuaFile("cl_database.lua")
 AddCSLuaFile( "sh_text.lua" )
 
 DeriveGamemode("sandbox")
@@ -11,7 +11,7 @@ include( "teams.lua" )
 include( "blocks.lua" )
 include( "sh_SsP.lua" )
 include( "utsounds.lua" )
-include( "database/database.lua" )
+include( "database.lua" )
 include( "chat.lua" )
 include( "sh_text.lua" )
 
@@ -141,11 +141,50 @@ function stuck( ply )
 	end
 end
 
+function spin( ply )
+    SPlay(ply, "hac/right_round_baby.mp3")
+    ply:ConCommand("+right")
+    timer.Create("stopspin", 7.6, 1, function()
+        ply:ConCommand("-right")
+    end)
+    timer.Create("8", 1, 7, function()
+        ply:ConCommand("say 8")
+    end)
+end
+
+function spinno8( ply )
+    SPlay(ply, "hac/right_round_baby.mp3")
+    ply:ConCommand("+right")
+    timer.Create("stopspin", 7.6, 1, function()
+        ply:ConCommand("-right")
+    end)
+end
+
+
+function spinforever( ply )
+    timer.Create("lolspin", 7.4, 0, function()
+        ply:ConCommand("spinno8")
+    end)
+end
+
+function stopspin()
+    for k, v in pairs(player.GetAll()) do
+        timer.Destroy("stopspin")
+        timer.Destroy("8")
+        timer.Destroy("lolspin")
+        v:ConCommand("-right")
+    end
+end
+
 concommand.Add( "stuck" , stuck )
 concommand.Add( "team_1", team_1 )
 concommand.Add( "team_2", team_2 )
 concommand.Add( "team_3", team_3 )
 concommand.Add( "team_r", team_r )
+concommand.Add( "spin", spin )
+concommand.Add( "spinno8", spinno8 )
+concommand.Add( "spinforever", spinforever )
+concommand.Add( "veryobscurecommandinyourconsolethatstopsyoufromspinningforever", stopspin)
 
 -- Death handling
 local maxdeathtime = 5;

@@ -61,7 +61,7 @@ end
 
 function ply:databaseExists()
 	local f = file.Exists(self:databasePath(), "DATA")
-    PrintMessage("database exists called, result: " .. f)
+    PrintMessage (  HUD_PRINTTALK, "database exists called, result: " .. f)
 	return f
 end
 
@@ -80,7 +80,7 @@ end
 function ply:databaseCreate()
 	self:databaseDefault()
 	local b = file.CreateDir( "tdmgmdatabase/" )
-	PrintMessage("MADE DATABASE DIRECTORY!")
+	PrintMessage (  HUD_PRINTTALK, "MADE DATABASE DIRECTORY!")
 	self:databaseSave()
 end
 

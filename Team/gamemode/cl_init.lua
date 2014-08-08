@@ -1,7 +1,9 @@
 include( "shared.lua" )
 include( "sh_SsP.lua" )
+include( "sh_text.lua" )
 
 AddCSLuaFile( "sh_SsP.lua" )
+AddCSLuaFile( "sh_text.lua" )
 AddCSLuaFile( "database/cl_database.lua" )
 DeriveGamemode("sandbox")
 

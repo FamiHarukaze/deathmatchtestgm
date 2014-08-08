@@ -2,6 +2,7 @@ AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "sh_SsP.lua" )
 AddCSLuaFile("database/cl_database.lua")
+AddCSLuaFile( "sh_text.lua" )
 
 DeriveGamemode("sandbox")
 
@@ -12,8 +13,9 @@ include( "sh_SsP.lua" )
 include( "utsounds.lua" )
 include( "database/database.lua" )
 include( "chat.lua" )
+include( "sh_text.lua" )
 
-RunConsoleCommand("sv_alltalk", "1")
+RunConsoleCommand("sv_alltalk", "3")
 //Serverside stuff goes here
 local PlayerModels = {
 Model("models/player/Group01/Female_01.mdl"),

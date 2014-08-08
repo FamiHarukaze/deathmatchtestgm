@@ -16,3 +16,5 @@ function PlayerSay(ply, txt, teamChat)
 	//I'll add chattags later. - Liquid
 end
 hook.Add("PlayerSay", "PlayerSay", PlayerSay)
+
+print("Chat.lua loaded")

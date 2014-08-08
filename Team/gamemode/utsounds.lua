@@ -50,7 +50,7 @@ function unrealsound(victim, inflictor, killer)
 				SPlayAll("hsp/quake/wickedsick.wav")
 			end
 		end
-		if (inflictor == "weapon_crowbar") then
+		if (inflictor:GetActiveWeapon():GetClass() == "weapon_crowbar") then
 			SPlayAll("hsp/quake/humiliation.wav")
 		end
 	end

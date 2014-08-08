@@ -6,8 +6,8 @@ chat tags
 
 function PlayerSay(ply, txt, teamChat)
 	if string.sub( txt, 1, 4 ) == "/ooc" then // ShitRP
-		return "i am gay"
 		SPlay(ply, "hac/horns_new.mp3")
+		return "i am gay"
 	end
 	
 	if txt == "8" then // Eight

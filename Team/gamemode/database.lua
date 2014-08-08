@@ -5,6 +5,7 @@ function ply:ShortSteamID()
 	local id = self:SteamID()
 	local id = string.Replace(id, "STEAM_0:0:", "")
 	local id = string.Replace(id, "STEAM_0:1:", "")
+    PrintMessage(ply:Nick().."'s shortsteamid: "..id)
 	return id
 end
 
@@ -60,6 +61,7 @@ end
 
 function ply:databaseExists()
 	local f = file.Exists(self:databasePath(), "DATA")
+    PrintMessage("database exists called, result: " .. f)
 	return f
 end
 
@@ -72,12 +74,13 @@ function ply:databaseSave()
 	local str = util.TableToKeyValues(self.database)
 	local f = file.Write(self:databasePath(), str)
 	self:databaseSend()
+    PrintMessage(self:Nick().." has had database saved clientside")
 end
 
 function ply:databaseCreate()
 	self:databaseDefault()
-	local b = file.CreateDir( "garrysmod/tdmgmdatabase/" )
-	print("MADE DIRECTORY!")
+	local b = file.CreateDir( "tdmgmdatabase/" )
+	PrintMessage("MADE DATABASE DIRECTORY!")
 	self:databaseSave()
 end
 

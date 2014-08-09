@@ -7,7 +7,7 @@ AddCSLuaFile( "sh_text.lua" )
 AddCSLuaFile( "database/cl_database.lua" )
 DeriveGamemode("sandbox")
 
-print("Clientside lua startup")
+print("plyside lua startup")
 
 function set_team(ply)
  
@@ -59,19 +59,26 @@ end
 end
 concommand.Add( "team_menu", set_team )
 
-function HUDHide( myhud )
-for k, v in pairs{"CHUDHealth","CHudBattery",} do 
-if myhud == v then return false end
+function myhud()
+	local client = LocalPlayer()
+	if !client:Alive() then return end
+	if(client:GetActiveWeapon() == NULL or client:GetActiveWeapon() == "Camera") then return end
+	draw.SimpleText(client:Health() .. "%", "DermaLarge", 64, 699, Color(255, 255, 60, 90), 0, 0)
+	local mag_left = client:GetActiveWeapon():Clip1() // How much ammunition you have inside the current magazine
+	local mag_extra = client:GetAmmoCount(client:GetActiveWeapon():GetPrimaryAmmoType()) // How much ammunition you have outside the current magazine
+	local secondary_ammo = client:GetAmmoCount(client:GetActiveWeapon():GetSecondaryAmmoType())// How much ammunition you have for your secondary fire, such as the MP7's grenade launcher
 end
+hook.Add("HUDPaint", "myhud", myhud)
+ 
+local tohide = { -- This is a table where the keys are the HUD items to hide
+	["CHudHealth"] = true,
+	["CHudBattery"] = true,
+	["CHudAmmo"] = true,
+	["CHudSecondaryAmmo"] = true
+}
+local function HUDShouldDraw(name) -- This is a local function because all functions should be local unless another file needs to run it
+	if (tohide[name]) then     -- If the HUD name is a key in the table
+		return false;      -- Return false.
+	end
 end
-hook.Add("HUDShouldDraw","HudHide",HUDHide)
-
-function GM:HUDPaint()
-    self.BaseClass:HUDPaint()
-    local ply = LocalPlayer()
-    local HP = LocalPlayer():Health()
-    local ARM = LocalPlayer():Armor()
-
-    surface.CreateFont("HUD", {size = 20, weight = 900, antialias = true, shadow = false, font = "DermaLarge"})
-    hook.Add( "HUDPaint", "HUDHP", function() surface.SetFont( "HUD" ) surface.SetTextColor( 255, 0, 0 ) surface.SetTextPos( 32, 32 ) surface.DrawText( ply:Health() ) end )﻿
-end
+hook.Add("HUDShouldDraw", "How to: HUD Example HUD hider", HUDShouldDraw)

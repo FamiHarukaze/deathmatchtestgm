@@ -13,6 +13,10 @@ function PlayerSay(ply, txt, teamChat)
 	if txt == "8" then // Eight
 		SPlayAll("hac/eight.wav")
 	end
+	
+	if string.sub( txt, 1, 1 ) == ">" then
+		return Color(120, 153, 69), txt
+	end
 	//I'll add chattags later. - Liquid
 end
 hook.Add("PlayerSay", "PlayerSay", PlayerSay)

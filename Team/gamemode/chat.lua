@@ -1,26 +1,82 @@
 /*
-If /ooc then say im gay
-8 plays hac/eight.wav
-chat tags
+	Coded by Fami Harukaze - Originally on Naisho, also known as nHook.
 */
 
-function PlayerSay(ply, txt, teamChat)
-	if string.sub( txt, 1, 4 ) == "/ooc" then // ShitRP
-		SPlay(ply, "hac/horns_new.mp3")
-		return "i am gay"
-	end
+hook.Add("OnPlayerChat", "GMOnPlayerChatHook", function( ply, text, team, dead ) 
 	
-	if txt == "8" then // Eight
-		SPlayAll("hac/eight.wav")
-	end
+			local group 	= "Groupless"
+			
+			local state 	= "*Unknown State*"
+			
+			local color 	= Color(255,0,0)
+			
+			local chatColor = Color(240,240,240)
+			
+			local name 		= "*Out of Sync*"
+			
+			if ply:EntIndex() == 0 then
+			
+				name 		= "Remote Console"
+				
+				color 		= Color(155,155,155)
+				
+				chatColor	= Color(240,30,0)
+				
+				group		= ""
+				
+				state		= ""
+				
+			else
+			
+				name 		= ply:Nick()
+				
+				color 		= Color(240, 240, 240)
+								
+				group		= "("..ply:GetNWString("UserGroup")..") "
+				
+				if group == "0" then
+				
+					group 	= ""
+				
+				else
+					
+					group 	= group
+				
+				end
+				
+				--[[if NYX:IsAdmin(ply) then
+					
+					if group == "0" then
+					
+						group 	= "(Administrator) "
+						
+					end
+					
+					chatColor	= Color(240,30,0)
+					
+				else
+				
+					chatColor	= Color(240,240,240)
+					
+				end]]
+				
+				chatColor	= Color(240,240,240)
+				
+				if ply:Alive() then
+				
+					state = ""
+				
+				else
+				
+					state = "*DEAD* "
+				
+				end
+				
+			end
 	
-	if string.sub( txt, 1, 1 ) == ">" then
-		local teamcolor = team.GetColor(ply:Team())
-		ATextAll(teamcolor, ply:Nick(), color_white, ": ", Color(120, 153, 69), txt)
-		return ""
-	end
-	//I'll add chattags later. - Liquid
-end
-hook.Add("PlayerSay", "PlayerSay", PlayerSay)
+		chat['AddText']( Color(240,10,0), state, color, group .. name .. " > ", chatColor, text )
+
+	return true
+end)
 
 ATextAll("Loaded")

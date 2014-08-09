@@ -15,12 +15,12 @@ function PlayerSay(ply, txt, teamChat)
 	end
 	
 	if string.sub( txt, 1, 1 ) == ">" then
-		return "test"
+		local teamcolor = team.GetColor(ply:Team())
+		ATextAll(teamcolor, ply:Nick(), color_white, ": ", Color(120, 153, 69), txt)
+		return ""
 	end
 	//I'll add chattags later. - Liquid
 end
 hook.Add("PlayerSay", "PlayerSay", PlayerSay)
 
-for k, v in pairs(player.GetAll()) do
-	v:PrintMessage(HUD_PRINTTALK, "loaded")
-end
+ATextAll("Loaded")

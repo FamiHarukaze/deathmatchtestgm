@@ -58,4 +58,20 @@ end
  
 end
 concommand.Add( "team_menu", set_team )
- 
+
+function HUDHide( myhud )
+for k, v in pairs{"CHUDHealth","CHudBattery",} do 
+if myhud == v then return false end
+end
+end
+hook.Add("HUDShouldDraw","HudHide",HUDHide)
+
+function GM:HUDPaint()
+    self.BaseClass:HUDPaint()
+    local ply = LocalPlayer()
+    local HP = LocalPlayer():Health()
+    local ARM = LocalPlayer():Armor()
+
+    surface.CreateFont("HUD", {size = 20, weight = 900, antialias = true, shadow = false, font = "DermaLarge"})
+    hook.Add( "HUDPaint", "HUDHP", function() surface.SetFont( "HUD" ) surface.SetTextColor( 255, 0, 0 ) surface.SetTextPos( 32, 32 ) surface.DrawText( ply:Health() ) end )﻿
+end

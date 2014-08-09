@@ -48,6 +48,7 @@ function GM:PlayerAuthed(ply, SteamID, UniqueID)
      PrintMessage( HUD_PRINTTALK, ply:Name().. " was authenticated with steam")
      //PrintMessage( HUD_PRINTTALK, ply:Name().. "'s SteamID is " .. ply:SteamID())
      //PrintMessage( HUD_PRINTTALK, ply:Name().. "'s UniqueID is " .. ply:UniqueID())
+     ply:databaseCheck()
 end
 
 function GM:PlayerDisconnected( ply )
@@ -55,6 +56,7 @@ function GM:PlayerDisconnected( ply )
      if (!ply:Alive()) then
          SPlayAll("hsp/quake/ragequit.mp3")
      end
+     ply:databaseDisconnect()
 end
 
 function GM:PlayerInitialSpawn(ply)
@@ -80,7 +82,7 @@ function GM:PlayerSpawn(ply)
     --         ply:SetHealth(1337)
     --     end
     -- end
-	ply:AllowFlashlight( true ) 
+    ply:AllowFlashlight( true ) 
 end
 
 function GM:PlayerLoadout(ply)
@@ -197,6 +199,8 @@ function player_initdeath( ply, wep, killer )
      elseif (killer:SteamID() != ply:SteamID()) then
         ply:PrintMessage(HUD_PRINTTALK,"You have been killed by " .. killer:Nick() .. ", He had " .. killer:Health() .. "HP left.")
         killer:PrintMessage(HUD_PRINTTALK,"You killed " .. ply:Nick() .. "!")
+        GiveKT(killer,1)
+        GiveEXP(killer,1)
 		if killer:Health() < 96 then
 			killer:SetHealth(killer:Health() + 5)
 		end

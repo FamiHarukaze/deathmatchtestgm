@@ -3,9 +3,9 @@ util.AddNetworkString( "database" )
 
 function ply:ShortSteamID()
 	local id = self:SteamID()
+	local id = tostring(id)
 	local id = string.Replace(id, "STEAM_0:0:", "")
 	local id = string.Replace(id, "STEAM_0:1:", "")
-    PrintMessage(ply:Nick().."'s shortsteamid: "..id)
 	return id
 end
 
@@ -17,20 +17,27 @@ end
 function ply:databaseDefault()
 	self:databaseSetValue( "killtokens", 0 )
 	self:databaseSetValue( "exp", 0 )
+	local i = {}
+	--i["<item>"] = { amount = <amount> }
+	self:databaseSetValue( "inventory", i )
 end
 
 function ply:databaseNetworkedData()
-	local killtokens = self:databaseGetValue( "killtokens" )
+	local ktokens = self:databaseGetValue( "killtokens" )
 	local exp = self:databaseGetValue( "exp" )
-	self:SetNWInt("killtokens", killtokens)
+	self:SetNWInt("killtokens", ktokens)
 	self:SetNWInt("exp", exp)
 	
 	self:KillSilent()
 	self:Spawn()
 end
 
+function ply:databaseFolder()
+	return "players/"
+end
+
 function ply:databasePath()
-	return "tdmgmdatabase/" ..self:ShortSteamID().. ".txt"
+	return self:databaseFolder() .. self:ShortSteamID().. ".txt"
 end
 
 function ply:databaseSet( tab )
@@ -61,7 +68,6 @@ end
 
 function ply:databaseExists()
 	local f = file.Exists(self:databasePath(), "DATA")
-    PrintMessage (  HUD_PRINTTALK, "database exists called, result: " .. f)
 	return f
 end
 
@@ -74,13 +80,11 @@ function ply:databaseSave()
 	local str = util.TableToKeyValues(self.database)
 	local f = file.Write(self:databasePath(), str)
 	self:databaseSend()
-    PrintMessage(self:Nick().." has had database saved clientside")
 end
 
 function ply:databaseCreate()
 	self:databaseDefault()
-	local b = file.CreateDir( "tdmgmdatabase/" )
-	PrintMessage (  HUD_PRINTTALK, "MADE DATABASE DIRECTORY!")
+	local b = file.CreateDir( self:databaseFolder() )
 	self:databaseSave()
 end
 
@@ -90,6 +94,17 @@ end
 
 function ply:databaseSetValue( name, v )
 	if not v then return end
+	
+	if type(v) == "table" then
+		if name == "inventory" then
+			for k,b in pairs(v) do
+				if b.amount <= 0 then
+					v[k] = nil
+				end
+			end
+		end
+	end
+	
 	local d = self:databaseGet()
 	d[name] = v
 	

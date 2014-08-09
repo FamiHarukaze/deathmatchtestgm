@@ -15,10 +15,12 @@ function PlayerSay(ply, txt, teamChat)
 	end
 	
 	if string.sub( txt, 1, 1 ) == ">" then
-		return Color(120, 153, 69), txt
+		return "test"
 	end
 	//I'll add chattags later. - Liquid
 end
 hook.Add("PlayerSay", "PlayerSay", PlayerSay)
 
-print("Chat.lua loaded")
+for k, v in pairs(player.GetAll()) do
+	v:PrintMessage(HUD_PRINTTALK, "loaded")
+end

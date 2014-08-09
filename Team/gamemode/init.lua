@@ -72,6 +72,8 @@ function GM:PlayerSpawn(ply)
     ply:SetRunSpeed(440)
     ply:SetWalkSpeed(400)
 	ply:SetGamemodeSpawn()
+	ply:AddFrags(1)
+	ply:AddDeaths(-1)
     if (ply:Team() == 1) then
         SPlay(ply, "/hsp/quake/preparetofight.wav")
     else
